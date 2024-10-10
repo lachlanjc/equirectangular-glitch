@@ -56,7 +56,8 @@ export default function App() {
         id="1"
         sceneId={envUrl}
         imageSource={envUrl}
-        config={{ style: { width: "100vw" } }}
+        config={{ autoLoad: true }}
+        key={envUrl}
       />
       <Card
         style={{
@@ -72,7 +73,7 @@ export default function App() {
           value={prompt}
           onChange={(e) => setPrompt(e.currentTarget.value)}
           placeholder="Forest in Sweden"
-          style={{ width: 340 }}
+          style={{ width: "min(90vi - 4rem, 340px)" }}
         />
         <Button
           onClick={() => {
