@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import useSound from "use-sound";
-import { Card, Text, Button, Spinner, TextArea } from "@radix-ui/themes";
+import { Card, Button, Spinner, TextArea } from "@radix-ui/themes";
+import ReactPannellum from "react-pannellum";
 
 const REPLICATE_PROXY = "https://replicate-api-proxy.glitch.me";
 
@@ -44,34 +45,24 @@ export default function App() {
   const [playBite] = useSound("/bite.mp3");
   const [prompt, setPrompt] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [envUrl, setEnvUrl] = useState(null);
+  const [envUrl, setEnvUrl] = useState(
+    "https://replicate.delivery/pbxt/wIIZFwhik0p1HxQgw2JwKhL5VrJNSRsRbs7ZkbPPvXg3RU5E/out-0.png",
+  );
 
   return (
     <>
-      {envUrl ? (
-        <img
-          src={envUrl}
-          style={{
-            position: "fixed",
-            inset: 0,
-            objectFit: "cover",
-            height: "100dvh",
-          }}
-        />
-      ) : (
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "rgba(0,0,0,0.5)",
-          }}
-        />
-      )}
+      <style>{`body { margin: 0; } .pnlm-container { width: 100vw !important; height: 100dvh !important; position: absolute; inset: 0; }`}</style>
+      <ReactPannellum
+        id="1"
+        sceneId={envUrl}
+        imageSource={envUrl}
+        config={{ style: { width: "100vw" } }}
+      />
       <Card
         style={{
           position: "absolute",
           top: "2rem",
-          left: "2rem",
+          right: "2rem",
           display: "flex",
           flexDirection: "column",
           gap: "1rem",
