@@ -74,7 +74,6 @@ export default function App() {
           placeholder="Forest in Sweden"
           style={{ width: 340 }}
         />
-
         <Button
           onClick={() => {
             playBite();
